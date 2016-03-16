@@ -1,8 +1,13 @@
+Look up erlang docs. Same docs as erlang.org/doc
+```sh
+$ erl -man init
+```
+
 `-s Mod [Func [Arg1, Arg2, ...]]` makes `init` call the specified function.
 ```sh
 $ erl -noshell -eval 'io:format("Hello ~p~n", [1 + 2]).' -s erlang halt
 ```
-```
+
 
 ```sh
 $ erl -init_debug
