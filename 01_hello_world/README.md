@@ -2,6 +2,12 @@ The `-pa Dir1 Dir2` flag adds the specified directories to the beginning of the
 code path. '-pz' adds the directories to the end.
 
 ```sh
+$ cat foo.erl
+-module(foo).
+-export([add/2]).
+
+add(A, B) ->
+  {lol, A+B}.
 $ erlc foo.erl
 $ erl -pa .
 Erlang/OTP 18 [erts-7.2.1] [source] [64-bit] [smp:4:4] [async-threads:10]
