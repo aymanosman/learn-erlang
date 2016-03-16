@@ -32,3 +32,20 @@ Erlang/OTP 18 [erts-7.2.1] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe]
 Eshell V7.2.1  (abort with ^G)
 1>
 ```
+
+```sh
+$ erl -a b c -a d
+Erlang/OTP 18 [erts-7.2.1] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+Eshell V7.2.1  (abort with ^G)
+1> init:get_argument(a).
+{ok,[["b","c"],["d"]]}
+2> init:get_arguments().
+[{root,["/usr/local/Cellar/erlang/18.2.1/lib/erlang"]},
+ {progname,["erl"]},
+ {home,["/Users/aosman"]},
+ {a,["b","c"]},
+ {a,["d"]}]
+3>
+```
+
