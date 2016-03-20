@@ -1,7 +1,8 @@
-joe:
-	erl -sname joe -s mod start_pong
+compile:
+	erlc mod.erl
 
-HOST=aosman-zen
-mike:
-	@echo In shell run this: "mod:start_ping('joe@${HOST}')."
-	erl -sname mike
+joe: compile
+	erl -sname joe@localhost -s mod start_pong
+
+mike: compile
+	erl -sname mike@localhost -s mod start_ping2 joe@localhost

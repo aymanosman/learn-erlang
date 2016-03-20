@@ -1,6 +1,6 @@
 -module(mod).
 
--export([start_ping/1, start_pong/0,  ping/2, pong/0]).
+-export([start_ping2/1, start_ping/1, start_pong/0,  ping/2, pong/0]).
 
 ping(0, Pong_Node) ->
     {pong, Pong_Node} ! finished,
@@ -29,3 +29,6 @@ start_pong() ->
 
 start_ping(Pong_Node) ->
     spawn(mod, ping, [3, Pong_Node]).
+
+start_ping2([Node]) ->
+  start_ping(Node).
