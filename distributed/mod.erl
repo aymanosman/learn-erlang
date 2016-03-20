@@ -1,4 +1,4 @@
--module(tut17).
+-module(mod).
 
 -export([start_ping/1, start_pong/0,  ping/2, pong/0]).
 
@@ -25,7 +25,7 @@ pong() ->
     end.
 
 start_pong() ->
-    register(pong, spawn(tut17, pong, [])).
+    register(pong, spawn(mod, pong, [])).
 
 start_ping(Pong_Node) ->
-    spawn(tut17, ping, [3, Pong_Node]).
+    spawn(mod, ping, [3, Pong_Node]).
