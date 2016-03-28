@@ -1,2 +1,5 @@
 all:
-	erlc -o ebin src/tr_server.erl
+	erlc -o ebin src/*.erl
+
+shell:
+	erl -pa ebin
