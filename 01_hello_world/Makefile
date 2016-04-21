@@ -4,6 +4,6 @@ compile:
 	erlc foo.erl
 
 run:
-	erl -boot start_clean -pa . \
+	erl -noshell \
 		-s foo demo Erlang \
 		-s erlang halt
