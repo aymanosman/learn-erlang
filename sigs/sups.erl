@@ -4,7 +4,7 @@
          x/0,
          xx/0,
          init_it/1,
-         start_link/0,
+         start_link_supervisor/0,
          init/1]).
 
 f() -> 8.
@@ -21,9 +21,9 @@ init_it(Parent) ->
 %   {ok, Pid}.
 
 xx() ->
-  % X = ?MODULE:f(),
-  F = fun() -> f() end,
-  X = F(),
+  X = ?MODULE:f(),
+  % F = fun() -> f() end,
+  % X = F(),
   io:format("GG: ~p~n", [X]),
   timer:sleep(1000),
   xx().
@@ -34,5 +34,6 @@ init([]) -> % supervisor callback
             },
   {ok, {{one_for_one, 1, 1}, [Child]}}.
 
-start_link() ->
+start_link_supervisor() ->
   supervisor:start_link(?MODULE, []).
+
