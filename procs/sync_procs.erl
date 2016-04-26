@@ -1,9 +1,11 @@
--module(procs_sync).
+-module(sync_procs).
 
 -export([demo1/0,
          demo2/0,
-         two_init/1,
+         two/1,
          two_loop/0,
+         sync_spawn/3,
+         start_two/0,
          one/0
         ]).
 
@@ -29,7 +31,7 @@ one() ->
 
 % demo synchronous start up
 demo2() ->
-  {ok, P} = sync_spawn(?MODULE, two_init, [self()]),
+  {ok, P} = start_two(),
   P ! {self(), hello},
   receive
   	Reply ->
@@ -39,7 +41,10 @@ demo2() ->
       io:format("Got nothing :(~n")
   end.
 
-two_init(Parent) ->
+start_two() ->
+  sync_spawn(?MODULE, two, [self()]).
+
+two(Parent) ->
   _ = slow_init(),
   Parent ! ready,
   two_loop().
@@ -62,4 +67,5 @@ sync_spawn(Mod, Fun, Args) ->
   end.
 
 slow_init() ->
-  timer:sleep(1000). % simulate slow initialization
+  timer:sleep(1000), % simulate slow initialization
+  loop_data.

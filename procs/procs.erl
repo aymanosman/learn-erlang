@@ -5,7 +5,9 @@
 
 %% spawn ... init,loop,stop ... terminate
 
-%% e.g. P = spawn(procs, one, []).
+%% e.g.
+%% > P = spawn(procs, one, []).
+%% > is_process_alive(P).
 
 % terminate
 one() ->
